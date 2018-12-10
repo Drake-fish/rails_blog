@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :set_post, only: [:edit, :update, :show, :destory]
+  before_action :set_post, only: [:edit, :update, :show, :destroy]
 
   def set_post
     @post = Post.find(params[:id])
@@ -17,6 +17,7 @@ class PostsController < ApplicationController
   def create
     # render plain: params[:post].inspect
     @post = Post.new(post_params)
+    @post.user = User.first
     if @post.save
       redirect_to post_path(@post)
       flash[:notice] = "Post was successfully created!"
