@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   resources :posts
   root 'pages#home'
   # get 'about', to: 'welcome#about'
+  get 'signup', to: 'users#new'
+
+  post 'users', to: 'users#create'
 end
