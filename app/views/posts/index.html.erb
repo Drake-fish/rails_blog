@@ -1,5 +1,6 @@
 <h1>Here is all the Posts</h1>
 
 <p> <%= link_to "Create a new Post", new_post_path %> </p>
-
+<%= will_paginate %>
 <%= render 'post', obj: @posts %>
+<%= will_paginate %>
