@@ -1,5 +1,9 @@
 <h1>Here is your created Post</h1>
-
+<% if @post.user %>
+  <%= gravatar_for @post.user %>
+  <%= link_to @post.user.username, user_path(@post.user) %>
+  <p><%= pluralize(@post.user.posts.count, "post") if @post.user.posts %></p>
+<% end %>
 <p>
   Title: <%= @post.title %>
 </p>
