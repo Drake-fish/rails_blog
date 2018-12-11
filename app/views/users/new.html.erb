@@ -1,20 +1,4 @@
 
+<h1>Sign up for the blog</h1>
 
-<%= form_for @user do |f| %>
-  <p>
-    <%= f.label :username %><br/>
-    <%= f.text_field :username, placeholder: "Username" %>
-  </p>
-  <p>
-    <%= f.label :email %><br/>
-    <%= f.email_field :email, placeholder: "email" %>
-  </p>
-  <p>
-    <%= f.label :password %><br/>
-    <%= f.password_field :password, placeholder: "password" %>
-  </p>
-  <p>
-    <%= f.submit "Sign up" %>
-  </p>
-  <%= link_to "Back", posts_path %>
-<% end %>
+<%= render 'form' %>

@@ -1,0 +1,27 @@
+<% if @user.errors.any? %>
+  <h2>Whoooaa there! Here's some errors</h2>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+    <li class="errors"><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <p>
+    <%= f.label :username %><br/>
+    <%= f.text_field :username, placeholder: "Username" %>
+  </p>
+  <p>
+    <%= f.label :email %><br/>
+    <%= f.email_field :email, placeholder: "email" %>
+  </p>
+  <p>
+    <%= f.label :password %><br/>
+    <%= f.password_field :password, placeholder: "password" %>
+  </p>
+  <p>
+    <%= f.submit{@user.new_record? ? "Sign up" : "Update"} %>
+  </p>
+  <%= link_to "Back", posts_path %>
+<% end %>
