@@ -1,10 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :set_post, only: [:edit, :update, :show, :destroy]
-
-  def set_post
-    @post = Post.find(params[:id])
-  end
+  before_action :redirect_unless_authorized, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.paginate(page: params[:page], per_page: 5)
@@ -17,7 +14,7 @@ class PostsController < ApplicationController
   def create
     # render plain: params[:post].inspect
     @post = Post.new(post_params)
-    @post.user = User.first
+    @post.user = current_user
     if @post.save
       redirect_to post_path(@post)
       flash[:notice] = "Post was successfully created!"
@@ -50,5 +47,16 @@ class PostsController < ApplicationController
 private
   def post_params
       params.require(:post).permit(:title, :body)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def redirect_unless_authorized
+    unless current_user == @post.user || current_user.admin?
+      flash[:danger] = "You can only edit or delete your own posts"
+      redirect_to root_path
+    end
   end
 end

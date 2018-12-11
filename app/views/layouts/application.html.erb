@@ -10,11 +10,7 @@
   </head>
 
   <body>
-    <ul>
-      <li><%= link_to 'Login', login_path %></li>
-      <li><%= link_to 'logout', logout_path, method: :delete %></li>
-      <li><%= link_to 'posts', posts_path %></li>
-    </ul>
+    <%= render 'layouts/navigation' %>
     <% flash.each do |name, msg| %>
      <ul>
        <li><%= msg %></li>

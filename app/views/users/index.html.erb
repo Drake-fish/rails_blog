@@ -3,5 +3,11 @@
 <% @users.each do |user| %>
   <%= gravatar_for user %>
   <%= link_to user.username, user_path(user) %>
-  <p><%= pluralize(user.posts.count, "post") if user.posts %></p>
+  <p><%= pluralize(user.posts.length, "post") if user.posts %></p>
+  <% if logged_in? && current_user.admin? %>
+    <p>
+      <%= link_to "Delete User", user_path(user), method: :delete,
+          data: {confirm: "Are you sure you want to delete the user and all of their posts??"} %>
+    </p>
+  <% end %>
 <% end %>
