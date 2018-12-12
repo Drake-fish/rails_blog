@@ -5,8 +5,12 @@
   <p><%= pluralize(@post.user.posts.count, "post") if @post.user.posts %></p>
 <% end %>
 <p>
-  Title: <%= @post.title %>
+  <%= @post.title %>
 </p>
 <p>
-  Body: <%= @post.body %>
+  <%= @post.body %>
 </p>
+<p>
+  <% if @post.tags.any? %>
+    <p>Tags: <%= render @post.tags %> </p>
+  <% end %>

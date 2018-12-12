@@ -10,6 +10,8 @@ class TagsController < ApplicationController
   end
 
   def show
+    @tag = Tag.find(params[:id])
+    @tag_posts = @tag.posts.paginate(page: params[:page], per_page: 5)
   end
 
   def create

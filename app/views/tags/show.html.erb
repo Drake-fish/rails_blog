@@ -1,0 +1,4 @@
+<h1>Here is all <%= @tag.name %> posts</h1>
+<%= will_paginate @tag_posts %>
+  <%= render 'posts/post', obj: @tag_posts %>
+<%= will_paginate @tag_posts %>
