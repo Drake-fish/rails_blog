@@ -1,0 +1,19 @@
+<% if @tag.errors.any? %>
+  <h2>Whoooaa there! Here's some errors</h2>
+  <ul>
+    <% @tag.errors.full_messages.each do |msg| %>
+    <li class="errors"><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @tag do |f| %>
+  <p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name, placeholder: "Tag Name" %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  <%= link_to "Back", posts_path %>
+<% end %>
