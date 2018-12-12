@@ -1,0 +1,5 @@
+admin:
+  username: "Bob"
+  email: "Bob@example.com"
+  password_digest: "passwordz"
+  admin: true
